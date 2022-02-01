@@ -1,4 +1,4 @@
-package starter.navigation;
+package com.trello.ui.navigation;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.DefaultUrl;

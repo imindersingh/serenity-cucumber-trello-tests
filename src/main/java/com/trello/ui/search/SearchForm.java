@@ -1,4 +1,4 @@
-package starter.search;
+package com.trello.ui.search;
 
 import net.serenitybdd.screenplay.targets.Target;
 
