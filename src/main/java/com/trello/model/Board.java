@@ -1,4 +1,5 @@
 package com.trello.model;
 
-public class Board {
+public interface Board {
+
 }

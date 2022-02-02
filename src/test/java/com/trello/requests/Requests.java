@@ -2,8 +2,7 @@ package com.trello.requests;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
-import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
+import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.guice.Injectors;
 import net.thucydides.core.util.EnvironmentVariables;
 
@@ -20,14 +19,19 @@ public class Requests {
             put("token", API_TOKEN);
         }
     };
+    private static final EnvironmentVariables ENVIRONMENT_VARIABLES = Injectors.getInjector()
+            .getInstance(EnvironmentVariables.class);
 
     public static RequestSpecification request() {
-        EnvironmentVariables environmentVariables = Injectors.getInjector()
-                .getInstance(EnvironmentVariables.class);
-        String baseUrl = environmentVariables.getProperty("restapi.base.url");
-        return new RequestSpecBuilder().setBaseUri(baseUrl)
+        return new RequestSpecBuilder().setBaseUri(getBaseUrl())
+                .setUrlEncodingEnabled(true)
                 .setAccept("application/json")
                 .addQueryParams(AUTH_QUERY_PARAMS)
                 .build();
     }
+
+    public static String getBaseUrl(){
+        return ENVIRONMENT_VARIABLES.getProperty("restapi.base.url");
+    }
+
 }
