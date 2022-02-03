@@ -1,6 +1,7 @@
 package com.trello.stepdefinitions.web;
 
 import com.trello.web.actions.Login;
+import com.trello.web.components.TrelloUser;
 import com.trello.web.components.TrelloWorkspace;
 import com.trello.web.navigation.NavigateTo;
 import io.cucumber.java.en.Given;
@@ -26,7 +27,7 @@ public class LoginStepDefinitions {
     @When("{actor} logs in with valid credentials")
     public void loginWithValidCredentials(final Actor actor) {
         actor.attemptsTo(
-                Login.with("bddtrellotesting@mailinator.com", "Greenfishbowl246!")
+                Login.with(TrelloUser.USER)
         );
     }
 

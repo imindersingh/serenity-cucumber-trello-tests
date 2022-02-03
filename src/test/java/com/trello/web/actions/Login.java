@@ -1,6 +1,7 @@
 package com.trello.web.actions;
 
 import com.trello.web.components.LoginForm;
+import com.trello.web.components.TrelloUser;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
@@ -12,15 +13,15 @@ import net.serenitybdd.screenplay.waits.Wait;
 public class Login {
     private static final String LOGIN_BUTTON_TEXT = "Log in with Atlassian";
 
-    public static Performable with(String user, String password) {
+    public static Performable with(TrelloUser trelloUser) {
         return Task.where("{0} logs in in with {user} and {password}",
-                Enter.theValue(user)
+                Enter.theValue(trelloUser.username)
                         .into(LoginForm.USER_FIELD),
                 Wait.until(WebElementQuestion.the(LoginForm.LOGIN_BUTTON), WebElementStateMatchers
                         .hasValue(LOGIN_BUTTON_TEXT))
                         .forNoMoreThan(5).seconds(),
                 Click.on(LoginForm.LOGIN_BUTTON),
-                Enter.theValue(password)
+                Enter.theValue(trelloUser.password)
                         .into(LoginForm.PASSWORD_FIELD),
                 Click.on(LoginForm.SUBMIT_BUTTON)
         );
