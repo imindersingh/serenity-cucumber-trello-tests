@@ -7,7 +7,7 @@ import net.serenitybdd.screenplay.rest.interactions.Post;
 
 public class BoardRequests {
     public static Task deleteBoard(final String boardId) {
-        return Task.where("{0} deletes board",
+        return Task.where("{0} deletes board by boardId",
                 Delete.from(String.format("/boards/%s", boardId))
                         .with(request -> request.spec(Requests.request())));
     }
@@ -20,7 +20,7 @@ public class BoardRequests {
     }
 
     public static Task getListsOnBoard(final String boardId) {
-        return Task.where("{0} gets list on a board",
+        return Task.where("{0} gets list on a board by boardId",
                 Get.resource(String.format("/boards/%s/lists", boardId))
                         .with(request -> request.spec(Requests.request())));
     }

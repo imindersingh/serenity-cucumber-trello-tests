@@ -7,8 +7,8 @@ import lombok.Setter;
 @Setter
 public class Card {
 
-    String name;
-    String description;
-    String due;
-    String id;
+    private String name;
+    private String description;
+    private String due;
+    private String id;
 }

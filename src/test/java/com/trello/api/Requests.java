@@ -2,6 +2,7 @@ package com.trello.api;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
+import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.guice.Injectors;
 import net.thucydides.core.util.EnvironmentVariables;
 
@@ -32,5 +33,9 @@ public class Requests {
 
     public static String getBaseUrl(){
         return ENVIRONMENT_VARIABLES.getProperty("restapi.base.url");
+    }
+
+    public static String getCardIdFromLastResponse() {
+        return SerenityRest.lastResponse().jsonPath().get("id");
     }
 }

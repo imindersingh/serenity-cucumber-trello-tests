@@ -2,16 +2,16 @@ package com.trello.stepdefinitions.api;
 
 import com.trello.api.CardRequests;
 import com.trello.api.ListRequests;
-import com.trello.model.*;
+import com.trello.api.Requests;
+import com.trello.model.Board;
+import com.trello.model.Card;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static net.serenitybdd.screenplay.rest.questions.ResponseConsequence.seeThatResponse;
 import static org.hamcrest.CoreMatchers.*;
@@ -25,7 +25,7 @@ public class ApiStepDefinitions {
         actor.attemptsTo(
                 CardRequests.createCard(name, description, dueDate, listName)
         );
-        card.setId(SerenityRest.lastResponse().jsonPath().get("id"));
+        card.setId(Requests.getCardIdFromLastResponse());
     }
 
     @When("{actor} edits the name to {} and description to {}")
@@ -82,14 +82,9 @@ public class ApiStepDefinitions {
 
     @And("{actor} should see the card is added to {string} list")
     public void shouldSeeCardOnList(final Actor actor, final String listName) {
-        final String listId = Board.list.
-                stream()
-                .filter(r -> r.getName().equalsIgnoreCase(listName))
-                .map(BoardList::getId)
-                .collect(Collectors.joining());
         actor.should(
                 seeThatResponse(response -> response
-                        .body("idList", equalTo(listId)))
+                        .body("idList", equalTo(Board.getListIdByName(listName))))
         );
     }
 
