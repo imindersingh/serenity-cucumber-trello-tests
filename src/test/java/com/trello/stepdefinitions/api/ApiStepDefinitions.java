@@ -28,6 +28,14 @@ public class ApiStepDefinitions {
         card.setId(Requests.getCardIdFromLastResponse());
     }
 
+    @When("{actor} creates card on a list that does {string}")
+    public void createNewCard(final Actor actor, final String listName) {
+        actor.attemptsTo(
+                CardRequests.createCard("name", "description", "dueDate", listName)
+        );
+
+    }
+
     @When("{actor} edits the name to {} and description to {}")
     public void editCardDetails(final Actor actor, final String name, final String description) {
         actor.attemptsTo(
@@ -102,4 +110,14 @@ public class ApiStepDefinitions {
                 )
         );
     }
+
+    @Then("{actor} should see a bad request response returned")
+    public void shouldGetABadRequestResponse(final Actor actor) {
+        actor.should(
+                seeThatResponse(response -> response
+                        .statusCode(400)
+                )
+        );
+    }
+
 }

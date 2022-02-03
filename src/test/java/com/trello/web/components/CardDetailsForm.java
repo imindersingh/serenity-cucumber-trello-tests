@@ -17,7 +17,7 @@ public class CardDetailsForm {
             .locatedBy("//*[@id=\"chrome-container\"]//div[4]/div[2]/div/div/div/div[2]/div/div/div[3]/div/input");
     public static final Target CARD_DETAILS_FORM = Target
             .the("Card details form")
-            .locatedBy("#chrome-container > div.window-overlay > div > div > div");
+            .locatedBy("div.window-overlay > div > div > div");
     public static final Target CLOSE_BUTTON = Target
             .the("Card title on board")
             .locatedBy("a[class=\"icon-md icon-close dialog-close-button js-close-window\"]");

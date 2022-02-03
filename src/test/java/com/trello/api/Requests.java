@@ -36,6 +36,6 @@ public class Requests {
     }
 
     public static String getCardIdFromLastResponse() {
-        return SerenityRest.lastResponse().jsonPath().get("id");
+        return (SerenityRest.lastResponse().jsonPath().get("id"));
     }
 }
