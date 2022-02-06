@@ -8,7 +8,15 @@ import com.trello.web.components.CardDetailsForm;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.JavaScriptClick;
 import net.serenitybdd.screenplay.ensure.Ensure;
+import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
+import net.serenitybdd.screenplay.questions.JavaScript;
+import net.serenitybdd.screenplay.questions.WebElementQuestion;
+import net.serenitybdd.screenplay.waits.Wait;
+import net.serenitybdd.screenplay.waits.WaitUntil;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class UserInterfaceStepDefinitions {
 
@@ -41,9 +49,18 @@ public class UserInterfaceStepDefinitions {
     }
 
     @Then("{actor} can see {string} has been added to the card's description")
-    public void canSeeHasBeenAddedToTheCardSDescription(final Actor actor, final String description) {
+    public void shouldSeeDescriptionHasBeenAddedToCard(final Actor actor, final String description) {
         actor.attemptsTo(
+                Wait.until(WebElementQuestion.the(CardDetailsForm.DESCRIPTION_TEXT), WebElementStateMatchers.isVisible())
+                        .forNoMoreThan(5).seconds(),
                 Ensure.that(CardDetailsForm.DESCRIPTION_TEXT).hasText(description)
+        );
+    }
+
+    @Then("{actor} closes the card details form")
+    public void closesTheCardDetailsForm(final Actor actor) {
+        actor.attemptsTo(
+                EditCard.closeForm()
         );
     }
 }

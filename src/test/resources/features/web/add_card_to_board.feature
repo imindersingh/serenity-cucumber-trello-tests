@@ -1,3 +1,4 @@
+@web
 Feature: Web: Add Cards To Board
   Description: Web UI tests that add cards to a trello board
 

@@ -1,3 +1,4 @@
+@api
 Feature: Edit Card Details
   Description: Tests for PUT /cards/{cardId} service to update card data
 

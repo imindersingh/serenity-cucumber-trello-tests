@@ -1,3 +1,4 @@
+@api
 Feature: Add Card To Board
   Description: Tests covering POST /cards service for creating new cards to add to a list
 

@@ -1,3 +1,4 @@
+@web
 Feature: Web: Login
 
   Scenario: Can successfully login

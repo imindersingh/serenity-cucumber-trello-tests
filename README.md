@@ -31,6 +31,19 @@ To run all the tests
 $ mvn clean verify
 ```
 
+To run all API tests
+```json
+$ mvn clean verify -Dcucumber.filter.tags="@api"
+
+```
+
+To run all web tests
+```json
+$ mvn clean verify -Dcucumber.filter.tags="@web"
+
+```
+
+
 ## Approach
 - I started off by firstly understanding the trello APIs by exploring the documentation and creating requests
 - For the purpose of this test, I needed to create a new account on trello to be able to interact with the APIs and the UI so I generated a key and token to use
@@ -50,7 +63,7 @@ $ mvn clean verify
 ## Improvements
 - Create additional journey based tests for the APIs:
   - Chain together requests based on user flows
-  - Negative tests for the individual services covering to validate the rules and error handling
+  - Negative tests for the individual services covering validation rules and error handling
 - Create journey based tests for the UI. I would personally keep these very end-to-end focused as creating and running them can be costly
 - Model the API request and responses into DTOs
 - Move the repo secrets such as username, passwords, api key and token into a secret store. We can use something like Keepass for this. The token should not be exposed publicly. For this test I created a new user account with a temp email for testing purposed only.

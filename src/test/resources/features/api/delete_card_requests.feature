@@ -1,3 +1,4 @@
+@api
 Feature: Delete Cards From Trello Board
   Description: Tests covering DELETE /cards/{cardId} service for deleting cards from the board
 

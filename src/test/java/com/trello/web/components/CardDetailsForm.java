@@ -5,21 +5,17 @@ import net.serenitybdd.screenplay.targets.Target;
 public class CardDetailsForm {
     public static final Target DESCRIPTION_BOX = Target
             .the("Add detailed description text box")
-            .locatedBy("div > p.u-bottom.js-hide-with-desc > a");
+            .locatedBy("//a[text()='Add a more detailed description…']");
     public static final Target DESCRIPTION_FIELD = Target
             .the("Add detailed description text box")
-            .locatedBy("div.description-edit.edit > textarea");
+            .locatedBy(".description-edit.edit > textarea");
     public static final Target SAVE_BUTTON = Target
             .the("Add detailed description text box")
-            .locatedBy("div.description-edit.edit > div > input");
+            .locatedBy(".description-edit.edit > div > input");
     public static final Target DESCRIPTION_TEXT = Target
             .the("Add detailed description text box")
-            .locatedBy("//*[@id=\"chrome-container\"]//div[4]/div[2]/div/div/div/div[2]/div/div/div[3]/div/input");
-    public static final Target CARD_DETAILS_FORM = Target
-            .the("Card details form")
-            .locatedBy("div.window-overlay > div > div > div");
+            .locatedBy(".current.markeddown.hide-on-edit.js-desc.js-show-with-desc");
     public static final Target CLOSE_BUTTON = Target
             .the("Card title on board")
-            .locatedBy("a[class=\"icon-md icon-close dialog-close-button js-close-window\"]");
-
+            .locatedBy(".window-overlay > div > div > a");
 }
