@@ -55,7 +55,7 @@ $ mvn clean verify -Dcucumber.filter.tags="@web"
 
 ## What I managed to achieve
 - Created API tests for adding, editing and deleting cards on a board
-- Created UI tests for login (this was required for the other test setup) and adding a card. The edit card feature is in wip, given the time I wasn't able to complete it fully
+- Created UI tests for login (this was required for the other test setup) and adding a card. The edit card feature is in wip, given the time I wasn't able to complete it fully. Update: fixed locators, edit card tests are running now.
 - For the API tests, modelled actions/requests around the services and their capabilities
 - For the UI tests, created actions and components for reusability
 - Created some classes to represent trello components such as board, list, cards
